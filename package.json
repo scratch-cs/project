@@ -1,0 +1,37 @@
+{
+  "author": "Bryan Costa, Tayvon Wright, Shlomo Porges",
+  "bin": {
+    "boil": "./bin/index.js"
+  },
+  "name": "boil",
+  "version": "1.0.0",
+  "description": "Scripting tool for React projects.",
+  "main": "./lib/logic.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bryanAcosta/project.git"
+  },
+  "keywords": [
+    "React",
+    "Redux",
+    "HTML",
+    "CSS",
+    "Node"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bryanAcosta/project/issues"
+  },
+  "homepage": "https://github.com/bryanAcosta/project#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
+    "webpack": "^4.29.6"
+  }
+}
