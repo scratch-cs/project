@@ -1,41 +1,14 @@
-#!/usr/bin/env node
-/* The above code tells the operating system what interpreter/application to
-pass the file to for execution */
-
-const fs = require("fs");
-var inquirer = require('inquirer');
-const clear = require('clear');
-
+'use strict';
 const webpack = require ('./action_webpack'); 
 const createServer = require ('./action_server'); 
 const react = require('./action_react')
 const pg = require('./action_pg')
 const mongo = require('./action_mongo')
-const fullConfig = require('./fullConfig')
 
-const actions = {
-  react: react.react,
-  webpack: webpack.webpack,
-  server: createServer,
-  fullConfig: fullConfig
-}
-
-/*Using slice below we ensure we are obtaining only the arguments after the first
-two elements in the process.argv array.*/
-let arguments = process.argv.slice(2);
-
-const action = arguments[0] ; 
-
-if (  !(action in actions)  ){
-  return console.log( `"${action}" is not YET implemented. \n availble commands are : ${Object.keys(actions)}`)
-}
-
-
-if(action == 'fullConfig'){
-  userInterface()
-}
-
-function userInterface () {
+module.exports.fullConfig = function () {
+  var inquirer = require('inquirer');
+  const clear = require('clear');
+  clear();
 
   const setupServer = {
       PORT: 3000,  
@@ -122,52 +95,5 @@ function userInterface () {
     .then(()=> console.log(userInput))
     .catch(err => console.log('OhOh: ',err))
   }
-/* The "bin" object key in package.json, in our case "boil", is the CLI command
-associated with our CLI tool. Its value is the file to be executed, in our case
-./bin/index.js */
 
-/* The bin directory includes all executable js files, in our case index.js */
-
-/* The lib folder contains other files which index.js might use. These files
-should contain all CLI tool logic. We have not yet modularized our code to follow
-this practice. */
-
-
-
-// Could require in below file, and/or others, containing further logic
-// const logic = require("./lib/greet");
-
-/* When we execute a js file with Node, Node provides a process variable
-which contains information about the executing process. Process.argv returns
-an array of arguments used while executing a js file with Node. The first
-element of that array is the path of the Node interpreter, and the second
-element is the path of the file being executed. Later elements are space
-separated text values added after the command, in our case, "boil".
-
-
-/* On command "boil react" boil creates a project and a client directory, and inside
-client directory: App, container component, babel rc file, and index.html file*/
-if (action == "react") {
-  react.react();
-}
-
-/* On command "boil server" boil creates a server directory within the project
-directory, and within the server directory: a server file. Optional second
-commands are "boil server pg", which creates a postgresQL database file,
-and "boil server mongo", which creates a mongoDB database file.*/
-if (action == "server") {
-  createServer.createServer();
-
-  if (arguments[1] == "pg") {
-    pg.pg()
-  } 
-  if (arguments[1] == "mongo") {
-    mongo.mongo();
-  }
-
-}
-
-/* On command "boil webpack" boil creates a webpack configuration file within the root directory.*/
-if (action == "webpack") {
-  webpack.webpack();
-}
+ 
