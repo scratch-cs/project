@@ -53,9 +53,9 @@ if (arguments[0] == "react") {
   let cointainerPath = "./project/client/container.jsx";
   let containerCode =
     "import React, { Component } from 'react';\nimport { render } from 'react-dom';\n\n" +
-    "class App extends Component {\n\tconstructor(props) {\n\t\tsuper(props);\n\t\t" +
+    "class Container extends Component {\n\tconstructor(props) {\n\t\tsuper(props);\n\t\t" +
     "this.state = {};\n\t}\n\n\trender() {\n\t\treturn (\n\t\t\t<div>\n\t\t\t\t" +
-    "<Container />\n\t\t\t</div>\n\t\t);\n\t}\n}\n\nexport default App;";
+    "<Display />\n\t\t\t</div>\n\t\t);\n\t}\n}\n\nexport default Container;";
 
   fs.writeFile(cointainerPath, containerCode, err => {
     if (err) throw err;
