@@ -1,0 +1,50 @@
+{
+  "author": "Bryan Costa, Tayvon Wright, Shlomo Porges",
+  "bin": {
+    "boil": "./bin/index.js"
+  },
+  "name": "boil",
+  "version": "1.0.0",
+  "description": "Scripting tool for React projects.",
+  "main": "./lib/logic.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bryanAcosta/project.git"
+  },
+  "keywords": [
+    "React",
+    "Redux",
+    "HTML",
+    "Node",
+    "Webpack"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bryanAcosta/project/issues"
+  },
+  "homepage": "https://github.com/bryanAcosta/project#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongo": "^0.1.0",
+    "mongoose": "^5.4.20",
+    "pg": "^7.9.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-hot-loader": "^4.8.2",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  }
+}
