@@ -14,6 +14,8 @@ should contain all CLI tool logic. We have not yet modularized our code to follo
 this practice. */
 
 const fs = require("fs");
+const htmlRender = require('../lib/htmlRender');
+
 
 // Could require in below file, and/or others, containing further logic
 // const logic = require("./lib/greet");
@@ -79,12 +81,20 @@ if (arguments[0] == "react") {
 
   // Create index html file
   let indexPath = "./project/public/index.html";
-  let indexCode =
-    '<!DOCTYPE html>\n<html lang="en">\n\t<head>\n\t\t<meta charset="UTF-8" />\n\t\t' +
-    '<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n\t\t' +
-    '<meta http-equiv="X-UA-Compatible" content="ie=edge" />\n\t\t<title>App</title>\n\t' +
-    '</head>\n\t<body>\n\t\t<div id="root"></div>\n\t\t<div id="app"></div>\n\t\t' +
-    '<script src="bundle.js"></script>\n\t</body>\n\t</html>';
+
+  // begin dynamically rendering file
+  let h = new htmlRender.HTML();
+  // pass in options or settle for defaults
+  h.addHead();
+  h.addBody();
+
+  let indexCode = create(h);
+  // let indexCode =
+  //   '<!DOCTYPE html>\n<html lang="en">\n\t<head>\n\t\t<meta charset="UTF-8" />\n\t\t' +
+  //   '<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n\t\t' +
+  //   '<meta http-equiv="X-UA-Compatible" content="ie=edge" />\n\t\t<title>App</title>\n\t' +
+  //   '</head>\n\t<body>\n\t\t<div id="root"></div>\n\t\t<div id="app"></div>\n\t\t' +
+  //   '<script src="bundle.js"></script>\n\t</body>\n\t</html>';
 
   fs.writeFile(indexPath, indexCode, err => {
     if (err) throw err;
